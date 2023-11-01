@@ -1,5 +1,6 @@
 import flatpickr from 'flatpickr'
 import 'flatpickr/dist/flatpickr.min.css'
+import Notiflix from 'notiflix'
 
 const ONE_SECOND = 1000
 const startBtn = document.querySelector('[data-start]')
@@ -39,6 +40,7 @@ startBtn.onclick = () => {
     return
   }
   startBtn.disabled = true
+  startBtn.onclick = null
   setInterval(countDown, ONE_SECOND, countDownTime)
 }
 
@@ -75,6 +77,6 @@ function countDown(time) {
 }
 
 function onError() {
-  alert('Please choose a date in the future')
+  Notiflix.Notify.failure('Please choose a date in the future')
   startBtn.disabled = true
 }
