@@ -16,3 +16,97 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.back {
+  color: darkslategrey;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 250ms ease-in-out;
+}
+
+.back:hover {
+  color: chocolate;
+}
+
+.calendar-input {
+  font-size: 20px;
+  font-family: 'Comfortaa', sans-serif;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  outline: none;
+
+  border: 1px solid chocolate;
+  padding: 8px;
+}
+
+.btn {
+  font-size: 20px;
+  background-color: darkorange;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  border: 1px solid chocolate;
+  padding: 8px 24px;
+  margin-left: 8px;
+  transition: background-color 250ms ease-in-out,
+  box-shadow 400ms ease-in-out;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: chocolate;
+}
+
+.btn:active {
+  background-color: chocolate;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn:disabled {
+  background-color: lightgray;
+  border-color: grey;
+}
+
+.timer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding-top: 200px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+}
+
+.value,
+.separator {
+  font-size: 80px;
+  font-weight: 500;
+  font-family: 'Comfortaa', sans-serif;
+  line-height: 1;
+  align-items: center;
+  color: darkslategrey;
+}
+
+.days {
+  margin-right: 20px;
+}
+
+.separator {
+  transition: color 200ms linear;
+}
+
+.separator-container {
+  margin-top: -10px;
+}
+
+.label {
+  font-size: 20px;
+  font-family: 'Gabarito', sans-serif;
+  text-transform: uppercase;
+  color: chocolate;
+}
