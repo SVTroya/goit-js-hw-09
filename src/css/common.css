@@ -54,8 +54,7 @@ img {
   box-shadow 400ms ease-in-out;
 }
 
-.btn:hover,
-.btn:focus {
+.btn:hover {
   background-color: chocolate;
 }
 
