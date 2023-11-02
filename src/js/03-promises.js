@@ -3,11 +3,13 @@ import Notiflix from 'notiflix'
 const form = document.querySelector('form')
 
 form.onsubmit = (ev) => {
+  ev.preventDefault()
   const { delay, step, amount } = ev.target.elements
   let delayStep = Number(step.value)
   for (let position = 0, promiseDelay = Number(delay.value); position < amount.value; position++, promiseDelay += delayStep) {
     createPromise(position, promiseDelay)
   }
+  form.reset()
 }
 
 function createPromise(position, delay) {
