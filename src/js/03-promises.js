@@ -27,9 +27,9 @@ function createPromise(position, delay) {
 }
 
 function onSuccess({ position, delay }) {
-  setTimeout(Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay}ms`), delay)
+  setTimeout(Notiflix.Notify.success(`Fulfilled promise ${position + 1} in ${delay}ms`), delay)
 }
 
 function onReject({ position, delay }) {
-  setTimeout(Notiflix.Notify.failure(`Rejected promise ${position} in ${delay}ms`), delay)
+  setTimeout(Notiflix.Notify.failure(`Rejected promise ${position + 1} in ${delay}ms`), delay)
 }

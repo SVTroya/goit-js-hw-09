@@ -14,6 +14,7 @@ const timerEls = {
 }
 let selectedTime = null
 let timeFromStart = 0
+let countDownId = null
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -41,7 +42,7 @@ startBtn.onclick = () => {
   }
   startBtn.disabled = true
   startBtn.onclick = null
-  setInterval(countDown, ONE_SECOND, countDownTime)
+  countDownId = setInterval(countDown, ONE_SECOND, countDownTime)
 }
 
 function convertMs(ms) {
@@ -59,21 +60,29 @@ function convertMs(ms) {
 }
 
 function countDown(time) {
-  const { days, hours, minutes, seconds } = convertMs(time - timeFromStart)
-  const timeDisplayOption = {
-    minimumIntegerDigits: 2,
-    useGrouping: false,
-  }
   const { daysEl, hoursEl, minutesEl, secondsEl, separatorEls } = timerEls
-  daysEl.textContent = days.toLocaleString('en-US', timeDisplayOption)
-  hoursEl.textContent = hours.toLocaleString('en-US', timeDisplayOption)
-  minutesEl.textContent = minutes.toLocaleString('en-US', timeDisplayOption)
-  secondsEl.textContent = seconds.toLocaleString('en-US', timeDisplayOption)
-  separatorEls.forEach(el => el.style.color = 'darkslategrey')
-  setTimeout(() => {
-    separatorEls.forEach(el => el.style.color = 'transparent')
-  }, 200)
-  timeFromStart += ONE_SECOND
+  const timeLeft = time - timeFromStart
+  if (timeLeft >= 0) {
+    const { days, hours, minutes, seconds } = convertMs(timeLeft)
+    const timeDisplayOption = {
+      minimumIntegerDigits: 2,
+      useGrouping: false,
+    }
+    daysEl.textContent = days.toLocaleString('en-US', timeDisplayOption)
+    hoursEl.textContent = hours.toLocaleString('en-US', timeDisplayOption)
+    minutesEl.textContent = minutes.toLocaleString('en-US', timeDisplayOption)
+    secondsEl.textContent = seconds.toLocaleString('en-US', timeDisplayOption)
+    separatorEls.forEach(el => el.style.color = 'darkslategrey')
+    setTimeout(() => {
+      separatorEls.forEach(el => el.style.color = 'transparent')
+    }, 200)
+    timeFromStart += ONE_SECOND
+  }
+  else {
+    Notiflix.Notify.success("It's time!!!")
+    separatorEls.forEach(el => el.style.color = 'darkslategrey')
+    clearInterval(countDownId)
+  }
 }
 
 function onError() {
